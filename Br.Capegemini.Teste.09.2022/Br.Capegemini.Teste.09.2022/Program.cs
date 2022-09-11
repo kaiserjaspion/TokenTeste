@@ -5,6 +5,8 @@ using Br.Capegemini.Teste._09._2022.Services;
 using Br.Capegemini.Teste._09._2022.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,7 +32,14 @@ builder.Services.AddDbContext<Br.Capegemini.Teste._09._2022.Contexts.TokenContex
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+    {
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Mural", Version = "v1" });
+        // generate the XML docs that'll drive the swagger docs
+        var xmlFile = $"{ Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        c.IncludeXmlComments(xmlPath);
+    }); 
 
 var app = builder.Build();
 
