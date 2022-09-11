@@ -20,7 +20,7 @@ namespace Br.Capegemini.teste._09._2022.test
         [Fact]
         public async void GenerateTokenTest()
         {
-            Assert.NotNull(await _Service.GenerateToken(new Teste._09._2022.Models.UserRegistration{ CardNumber = 1234567891123456 ,CVV = 12345}));
+            Assert.NotNull(await _Service.GenerateToken(new Teste._09._2022.Models.UserRegistration{ CardNumber = 1234567891123456 ,CVV = 12345, Amount = (decimal)5.00}));
         }
 
         [Fact]

@@ -21,8 +21,15 @@ namespace Br.Capegemini.Teste._09._2022.Controllers
             {
                 return Ok(_service.GenerateToken(user));
                 
-            }catch (Exception ex)
+            }
+            catch (ArithmeticException ex)
             {
+                Console.WriteLine($"Value not in Range: {ex}");
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex}");
                 throw ex;
             }
         }
@@ -36,6 +43,7 @@ namespace Br.Capegemini.Teste._09._2022.Controllers
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"Exception: {ex}");
                 throw ex;
             }
         }
