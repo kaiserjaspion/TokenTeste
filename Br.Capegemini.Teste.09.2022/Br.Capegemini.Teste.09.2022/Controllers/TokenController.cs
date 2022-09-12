@@ -1,5 +1,6 @@
 ﻿using Br.Capegemini.Teste._09._2022.Models;
 using Br.Capegemini.Teste._09._2022.Services;
+using Br.Capegemini.Teste._09._2022.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 
@@ -11,8 +12,8 @@ namespace Br.Capegemini.Teste._09._2022.Controllers
     [Consumes(MediaTypeNames.Application.Json, MediaTypeNames.Application.Xml)]
     public class TokenController : Controller
     {
-        private readonly TokenService _service;
-        public TokenController(TokenService service)
+        private readonly ITokenService _service;
+        public TokenController(ITokenService service)
         {
             _service = service;
         }
@@ -28,7 +29,7 @@ namespace Br.Capegemini.Teste._09._2022.Controllers
         ///     
         ///     CVV must be between 100 and 99999
         ///     Card Number must contain 16 characters  starting ate least with 1
-        ///     Amount must have maximum 2 decimal digits
+        ///     Amount must have maximum 2 decimal digits, if x,00 do not use.
         ///
         /// </remarks>
         /// <returns>IEnumerable of slugs</returns>

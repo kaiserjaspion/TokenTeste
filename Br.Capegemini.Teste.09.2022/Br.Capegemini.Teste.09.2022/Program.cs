@@ -28,7 +28,7 @@ builder.Services.AddCors(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSingleton<SymmetricSecurityKey>(new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["SecurityKey"])));
-builder.Services.AddDbContext<Br.Capegemini.Teste._09._2022.Contexts.TokenContext>(c => c.UseSqlServer(builder.Configuration.GetConnectionString("SystemsData")));
+builder.Services.AddDbContext<Br.Capegemini.Teste._09._2022.Contexts.TokenContext>(c => c.UseSqlServer(builder.Configuration.GetConnectionString("TokenData")));
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 
