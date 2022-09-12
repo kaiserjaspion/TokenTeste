@@ -34,7 +34,7 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 
 builder.Services.AddSwaggerGen(c =>
     {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Mural", Version = "v1" });
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Token documentation", Version = "v1" });
         // generate the XML docs that'll drive the swagger docs
         var xmlFile = $"{ Assembly.GetExecutingAssembly().GetName().Name}.xml";
         var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
